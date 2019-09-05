@@ -18,7 +18,8 @@ import {
    MatChipsModule,
    MatTooltipModule,
    MatTableModule,
-   MatPaginatorModule
+   MatPaginatorModule,
+   MatCardModule
 } from '@angular/material';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
       MatListModule,
       MatGridListModule,
       MatFormFieldModule,
+      MatCardModule,
       MatInputModule,
       MatSelectModule,
       MatRadioModule,
@@ -51,6 +53,7 @@ import {
       MatListModule,
       MatGridListModule,
       MatInputModule,
+      MatCardModule,
       MatFormFieldModule,
       MatSelectModule,
       MatRadioModule,

@@ -7,7 +7,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>; 
   public currentUser: Observable<User>;
   constructor(private http: HttpClient) {
@@ -15,7 +15,7 @@ export class LoginService {
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
-  public get getCurrentUserValue(): User {
+  public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 

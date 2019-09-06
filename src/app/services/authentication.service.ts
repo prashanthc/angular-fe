@@ -8,8 +8,13 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+  private API_URL = 'http://localhost:9119';
+
   private currentUserSubject: BehaviorSubject<User>; 
+
   public currentUser: Observable<User>;
+  
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable()
@@ -19,13 +24,15 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
-    return this.http.post('session', {username, password})
+  login(loginDetails) {
+    return this.http.post(`${this.API_URL}/session`, loginDetails)
       .pipe(map(response=>{
-        let user: any = response;
-        if (user && user.token) {
+        let user: any = response['item'];
+        if (user && user.token) {          
           localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
         }
+        return user;
       }))
   }
 

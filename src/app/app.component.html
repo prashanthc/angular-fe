@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" class="app-header">
     <div><h4>DBS Hackathon</h4></div>
-    <span class="nav-tool-items">
+    <span class="nav-tool-items" *ngIf="!currentUser">
       <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
       <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    </span>
+    <span class="nav-tool-items" *ngIf="currentUser">
+      <a mat-button mat-raised-button (click)="logout()">Logout</a>
     </span>
   </mat-toolbar>
   

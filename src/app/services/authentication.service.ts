@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class AuthenticationService {
 
-  private API_URL = 'http://localhost:9119';
+  public API_URL = 'http://localhost:9119';
 
   private currentUserSubject: BehaviorSubject<User>; 
 
